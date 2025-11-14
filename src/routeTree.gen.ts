@@ -9,10 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SignupRouteImport } from './routes/signup'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as DashboardRouteRouteImport } from './routes/_dashboard/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DemoTanstackQueryRouteImport } from './routes/demo/tanstack-query'
+import { Route as DashboardShoppingRouteImport } from './routes/_dashboard/shopping'
+import { Route as DashboardRecipesRouteImport } from './routes/_dashboard/recipes'
+import { Route as DashboardProfileRouteImport } from './routes/_dashboard/profile'
+import { Route as DashboardPantryRouteImport } from './routes/_dashboard/pantry'
+import { Route as DashboardFavoritesRouteImport } from './routes/_dashboard/favorites'
 import { Route as DemoStartServerFuncsRouteImport } from './routes/demo/start.server-funcs'
 import { Route as DemoStartApiRequestRouteImport } from './routes/demo/start.api-request'
 import { Route as DemoApiTqTodosRouteImport } from './routes/demo/api.tq-todos'
@@ -23,6 +30,11 @@ import { Route as DemoStartSsrSpaModeRouteImport } from './routes/demo/start.ssr
 import { Route as DemoStartSsrFullSsrRouteImport } from './routes/demo/start.ssr.full-ssr'
 import { Route as DemoStartSsrDataOnlyRouteImport } from './routes/demo/start.ssr.data-only'
 
+const SignupRoute = SignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
@@ -31,6 +43,10 @@ const LoginRoute = LoginRouteImport.update({
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRouteRoute = DashboardRouteRouteImport.update({
+  id: '/_dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -42,6 +58,31 @@ const DemoTanstackQueryRoute = DemoTanstackQueryRouteImport.update({
   id: '/demo/tanstack-query',
   path: '/demo/tanstack-query',
   getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardShoppingRoute = DashboardShoppingRouteImport.update({
+  id: '/shopping',
+  path: '/shopping',
+  getParentRoute: () => DashboardRouteRoute,
+} as any)
+const DashboardRecipesRoute = DashboardRecipesRouteImport.update({
+  id: '/recipes',
+  path: '/recipes',
+  getParentRoute: () => DashboardRouteRoute,
+} as any)
+const DashboardProfileRoute = DashboardProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => DashboardRouteRoute,
+} as any)
+const DashboardPantryRoute = DashboardPantryRouteImport.update({
+  id: '/pantry',
+  path: '/pantry',
+  getParentRoute: () => DashboardRouteRoute,
+} as any)
+const DashboardFavoritesRoute = DashboardFavoritesRouteImport.update({
+  id: '/favorites',
+  path: '/favorites',
+  getParentRoute: () => DashboardRouteRoute,
 } as any)
 const DemoStartServerFuncsRoute = DemoStartServerFuncsRouteImport.update({
   id: '/demo/start/server-funcs',
@@ -93,6 +134,12 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
+  '/signup': typeof SignupRoute
+  '/favorites': typeof DashboardFavoritesRoute
+  '/pantry': typeof DashboardPantryRoute
+  '/profile': typeof DashboardProfileRoute
+  '/recipes': typeof DashboardRecipesRoute
+  '/shopping': typeof DashboardShoppingRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/demo/api/names': typeof DemoApiNamesRoute
@@ -108,6 +155,12 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
+  '/signup': typeof SignupRoute
+  '/favorites': typeof DashboardFavoritesRoute
+  '/pantry': typeof DashboardPantryRoute
+  '/profile': typeof DashboardProfileRoute
+  '/recipes': typeof DashboardRecipesRoute
+  '/shopping': typeof DashboardShoppingRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/demo/api/names': typeof DemoApiNamesRoute
@@ -122,8 +175,15 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_dashboard': typeof DashboardRouteRouteWithChildren
   '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
+  '/signup': typeof SignupRoute
+  '/_dashboard/favorites': typeof DashboardFavoritesRoute
+  '/_dashboard/pantry': typeof DashboardPantryRoute
+  '/_dashboard/profile': typeof DashboardProfileRoute
+  '/_dashboard/recipes': typeof DashboardRecipesRoute
+  '/_dashboard/shopping': typeof DashboardShoppingRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/demo/api/names': typeof DemoApiNamesRoute
@@ -141,6 +201,12 @@ export interface FileRouteTypes {
     | '/'
     | '/dashboard'
     | '/login'
+    | '/signup'
+    | '/favorites'
+    | '/pantry'
+    | '/profile'
+    | '/recipes'
+    | '/shopping'
     | '/demo/tanstack-query'
     | '/api/auth/$'
     | '/demo/api/names'
@@ -156,6 +222,12 @@ export interface FileRouteTypes {
     | '/'
     | '/dashboard'
     | '/login'
+    | '/signup'
+    | '/favorites'
+    | '/pantry'
+    | '/profile'
+    | '/recipes'
+    | '/shopping'
     | '/demo/tanstack-query'
     | '/api/auth/$'
     | '/demo/api/names'
@@ -169,8 +241,15 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/_dashboard'
     | '/dashboard'
     | '/login'
+    | '/signup'
+    | '/_dashboard/favorites'
+    | '/_dashboard/pantry'
+    | '/_dashboard/profile'
+    | '/_dashboard/recipes'
+    | '/_dashboard/shopping'
     | '/demo/tanstack-query'
     | '/api/auth/$'
     | '/demo/api/names'
@@ -185,8 +264,10 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DashboardRouteRoute: typeof DashboardRouteRouteWithChildren
   DashboardRoute: typeof DashboardRoute
   LoginRoute: typeof LoginRoute
+  SignupRoute: typeof SignupRoute
   DemoTanstackQueryRoute: typeof DemoTanstackQueryRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
   DemoApiNamesRoute: typeof DemoApiNamesRoute
@@ -201,6 +282,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/signup': {
+      id: '/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof SignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
@@ -213,6 +301,13 @@ declare module '@tanstack/react-router' {
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_dashboard': {
+      id: '/_dashboard'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof DashboardRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -228,6 +323,41 @@ declare module '@tanstack/react-router' {
       fullPath: '/demo/tanstack-query'
       preLoaderRoute: typeof DemoTanstackQueryRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_dashboard/shopping': {
+      id: '/_dashboard/shopping'
+      path: '/shopping'
+      fullPath: '/shopping'
+      preLoaderRoute: typeof DashboardShoppingRouteImport
+      parentRoute: typeof DashboardRouteRoute
+    }
+    '/_dashboard/recipes': {
+      id: '/_dashboard/recipes'
+      path: '/recipes'
+      fullPath: '/recipes'
+      preLoaderRoute: typeof DashboardRecipesRouteImport
+      parentRoute: typeof DashboardRouteRoute
+    }
+    '/_dashboard/profile': {
+      id: '/_dashboard/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof DashboardProfileRouteImport
+      parentRoute: typeof DashboardRouteRoute
+    }
+    '/_dashboard/pantry': {
+      id: '/_dashboard/pantry'
+      path: '/pantry'
+      fullPath: '/pantry'
+      preLoaderRoute: typeof DashboardPantryRouteImport
+      parentRoute: typeof DashboardRouteRoute
+    }
+    '/_dashboard/favorites': {
+      id: '/_dashboard/favorites'
+      path: '/favorites'
+      fullPath: '/favorites'
+      preLoaderRoute: typeof DashboardFavoritesRouteImport
+      parentRoute: typeof DashboardRouteRoute
     }
     '/demo/start/server-funcs': {
       id: '/demo/start/server-funcs'
@@ -295,10 +425,32 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface DashboardRouteRouteChildren {
+  DashboardFavoritesRoute: typeof DashboardFavoritesRoute
+  DashboardPantryRoute: typeof DashboardPantryRoute
+  DashboardProfileRoute: typeof DashboardProfileRoute
+  DashboardRecipesRoute: typeof DashboardRecipesRoute
+  DashboardShoppingRoute: typeof DashboardShoppingRoute
+}
+
+const DashboardRouteRouteChildren: DashboardRouteRouteChildren = {
+  DashboardFavoritesRoute: DashboardFavoritesRoute,
+  DashboardPantryRoute: DashboardPantryRoute,
+  DashboardProfileRoute: DashboardProfileRoute,
+  DashboardRecipesRoute: DashboardRecipesRoute,
+  DashboardShoppingRoute: DashboardShoppingRoute,
+}
+
+const DashboardRouteRouteWithChildren = DashboardRouteRoute._addFileChildren(
+  DashboardRouteRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DashboardRouteRoute: DashboardRouteRouteWithChildren,
   DashboardRoute: DashboardRoute,
   LoginRoute: LoginRoute,
+  SignupRoute: SignupRoute,
   DemoTanstackQueryRoute: DemoTanstackQueryRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
   DemoApiNamesRoute: DemoApiNamesRoute,
