@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Settings2, Sparkles, Zap } from "lucide-react";
+import { Search, Refrigerator, Sparkles } from "lucide-react";
 import { ReactNode } from "react";
 
 const features = [
@@ -7,14 +7,14 @@ const features = [
     title: "Track your pantry",
     description:
       "Add ingredients you have at home and keep your pantry organized",
-    icon: <Zap className="size-6" aria-hidden />,
+    icon: <Refrigerator className="size-6" aria-hidden />,
   },
 
   {
     title: "Find Recipes",
     description:
       "Get personalized recipe recommendations based on what you have",
-    icon: <Settings2 className="size-6" aria-hidden />,
+    icon: <Search className="size-6" aria-hidden />,
   },
 
   {

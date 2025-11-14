@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ChefHat } from "lucide-react";
 import { Button } from "@/components/ui/button";
-// import Image from 'next/image'
 import { TextEffect } from "@/components/ui/text-effect";
 import { AnimatedGroup } from "@/components/ui/animated-group";
 import { Header } from "../../header";
@@ -160,17 +159,6 @@ export default function HeroSection() {
                       </Link>
                     </Button>
                   </div>
-                  {/* <Button
-                    key={2}
-                    asChild
-                    size="lg"
-                    variant="ghost"
-                    className="h-10.5 rounded-xl px-5"
-                  >
-                    <Link to="/">
-                      <span className="text-nowrap">Request a demo</span>
-                    </Link>
-                  </Button> */}
                 </AnimatedGroup>
               </div>
             </div>

@@ -7,5 +7,12 @@ export const Logo = ({
   className?: string;
   uniColor?: boolean;
 }) => {
-  return <ChefHat className={cn("text-primary size-6", className)} />;
+  return (
+    <div className="flex items-center gap-2">
+      <ChefHat className={cn("text-primary size-6", className)} />
+      <span className="text-primary max-xs:hidden text-2xl font-bold">
+        Dineer
+      </span>
+    </div>
+  );
 };
