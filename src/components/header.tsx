@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 
 const menuItems = [
   { name: "Features", href: "/#features" },
-  { name: "About", href: "/about" },
+  { name: "About", href: "/#about" },
 ];
 
 export const Header = () => {
@@ -77,6 +77,7 @@ export const Header = () => {
                       <Link
                         to={item.href}
                         className="text-muted-foreground hover:text-accent-foreground block duration-150"
+                        aria-label={item.name}
                       >
                         <span>{item.name}</span>
                       </Link>
@@ -90,6 +91,7 @@ export const Header = () => {
                   variant="outline"
                   size="sm"
                   className={cn(isScrolled && "lg:hidden")}
+                  aria-label="Login"
                 >
                   <Link to="/login">
                     <span>Login</span>
@@ -99,6 +101,7 @@ export const Header = () => {
                   asChild
                   size="sm"
                   className={cn(isScrolled && "lg:hidden")}
+                  aria-label="Sign Up"
                 >
                   <Link to="/signup">
                     <span>Sign Up</span>
@@ -108,6 +111,7 @@ export const Header = () => {
                   asChild
                   size="sm"
                   className={cn(isScrolled ? "lg:inline-flex" : "hidden")}
+                  aria-label="Get Started"
                 >
                   <Link to="/login">
                     <span>Get Started</span>

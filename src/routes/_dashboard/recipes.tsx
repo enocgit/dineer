@@ -12,7 +12,7 @@ function RouteComponent() {
     <main className="container mx-auto px-4 py-8">
       <div className="mx-auto max-w-6xl space-y-6">
         <article>
-          <h1 className="mb-2 text-3xl font-bold">Recipe Recommendations</h1>
+          <h1 className="mb-2 text-3xl font-bold">Recipe</h1>
           <p className="text-muted-foreground">
             Discover delicious recipes based on your pantry
           </p>

@@ -1,13 +1,5 @@
 import { Link, useLocation } from "@tanstack/react-router";
-import {
-  Home,
-  Package,
-  Heart,
-  ShoppingCart,
-  User,
-  Info,
-  LogOut,
-} from "lucide-react";
+import { Home, Package, Heart, ShoppingCart, User, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "@tanstack/react-router";
 import { authClient } from "@/lib/auth-client";
@@ -47,7 +39,7 @@ export default function DashboardNavigation() {
 
           <div className="flex items-center gap-1">
             {navItems.map(({ to, icon: Icon, label }) => (
-              <Link key={to} to={to}>
+              <Link key={to} to={to} aria-label={label}>
                 <Button
                   variant={location.pathname === to ? "default" : "ghost"}
                   size="sm"

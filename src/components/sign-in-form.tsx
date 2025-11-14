@@ -10,6 +10,7 @@ import { Label } from "./ui/label";
 import { Logo } from "./logo";
 import { LabelInputContainer, BottomGradient } from "./label-input-container";
 import { IconBrandFacebook, IconBrandGoogle } from "@tabler/icons-react";
+import { Image } from "@unpic/react";
 
 export default function SignInForm() {
   const navigate = useNavigate({
@@ -55,9 +56,12 @@ export default function SignInForm() {
 
   return (
     <div className="shadow-input bg-card relative mx-auto w-full max-w-md rounded-none p-4 md:rounded-2xl md:p-8 dark:bg-black">
-      <img
+      <Image
+        alt="Carrot"
         src="/images/background/carrot.png"
         className="absolute -top-16 -right-10 size-32 rotate-45 sm:top-1 sm:-right-22"
+        width={128}
+        height={128}
       />
       <Link to="/" aria-label="go home">
         <Logo />

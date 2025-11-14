@@ -11,6 +11,7 @@ import { IconBrandGoogle, IconBrandFacebook } from "@tabler/icons-react";
 import { Link } from "@tanstack/react-router";
 import { Logo } from "./logo";
 import { LabelInputContainer, BottomGradient } from "./label-input-container";
+import { Image } from "@unpic/react";
 
 export default function SignUpForm() {
   const navigate = useNavigate({
@@ -60,9 +61,12 @@ export default function SignUpForm() {
   return (
     <div className="shadow-input relative mx-auto w-full max-w-md rounded-none bg-white p-4 md:rounded-2xl md:p-8 dark:bg-black">
       {/* Background element */}
-      <img
+      <Image
+        alt="Onion"
         src="/images/background/onion.png"
         className="absolute -top-16 -right-10 size-32 rotate-45 sm:top-1 sm:-right-22"
+        width={128}
+        height={128}
       />
       <Link to="/" aria-label="go home">
         <Logo />

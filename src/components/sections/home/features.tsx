@@ -1,13 +1,14 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Search, Refrigerator, Sparkles } from "lucide-react";
+import { Search, Sparkles, Box } from "lucide-react";
 import { ReactNode } from "react";
+import { Image } from "@unpic/react";
 
 const features = [
   {
     title: "Track your pantry",
     description:
       "Add ingredients you have at home and keep your pantry organized",
-    icon: <Refrigerator className="size-6" aria-hidden />,
+    icon: <Box className="size-6" aria-hidden />,
   },
 
   {
@@ -30,13 +31,19 @@ export default function Features() {
       <div className="@container mx-auto max-w-5xl px-6">
         <div className="relative mx-auto grid max-w-sm gap-6 *:text-center @min-4xl:max-w-full @min-4xl:grid-cols-3">
           {/* Background elements */}
-          <img
+          <Image
+            alt="Broccoli"
             src="/images/background/broccoli.png"
-            className="absolute top-4 -right-22 size-32 rotate-45"
+            className="xs:-right-22 absolute top-4 -right-10 size-32 rotate-45"
+            width={128}
+            height={128}
           />
-          <img
+          <Image
+            alt="Tomato"
             src="/images/background/tomato.png"
-            className="absolute bottom-4 -left-22 size-32 rotate-12"
+            className="xs:bottom-4 xs:-left-22 absolute bottom-12 -left-14 size-32 rotate-12"
+            width={128}
+            height={128}
           />
 
           {features.map((feature) => (
