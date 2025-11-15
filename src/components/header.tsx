@@ -110,7 +110,10 @@ export const Header = () => {
                 <Button
                   asChild
                   size="sm"
-                  className={cn(isScrolled ? "lg:inline-flex" : "hidden")}
+                  className={cn(
+                    "hidden",
+                    isScrolled ? "lg:inline-flex" : "hidden",
+                  )}
                   aria-label="Get Started"
                 >
                   <Link to="/login">
