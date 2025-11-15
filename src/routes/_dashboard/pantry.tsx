@@ -1,11 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 import { Plus, Search, XIcon } from "lucide-react";
 import { useState } from "react";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { Badge } from "@/components/ui/badge";
+import { getUser } from "@/functions/get-user";
 
 const ingredients = [
   { id: 1, name: "Chicken" },
@@ -14,10 +15,22 @@ const ingredients = [
 
 export const Route = createFileRoute("/_dashboard/pantry")({
   ssr: false,
+  beforeLoad: async () => {
+    const session = await getUser();
+    return { session };
+  },
+  loader: async ({ context }) => {
+    if (!context.session) {
+      throw redirect({
+        to: "/login",
+      });
+    }
+  },
   component: RouteComponent,
 });
 
 function RouteComponent() {
+  const { session } = Route.useRouteContext();
   const [searchTerm, setSearchTerm] = useState("");
   const [newIngredient, setNewIngredient] = useState("");
 
